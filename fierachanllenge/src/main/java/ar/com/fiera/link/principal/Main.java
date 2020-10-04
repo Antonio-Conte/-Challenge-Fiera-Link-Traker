@@ -1,10 +1,10 @@
-package principal;
+package ar.com.fiera.link.principal;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
-import config.SwaggerConfig;
+import ar.com.fiera.link.config.SwaggerConfig;
 
 @SpringBootApplication
 @Import(SwaggerConfig.class)
