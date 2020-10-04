@@ -1,0 +1,25 @@
+---------------------
+Fierra ReDirect
+---------------------
+Una aplicacion que oculte una URL dada. 
+Esa URL generada debe ser guardada en una base de datos.
+Cada vez que esa url enmascarada suma un contador de visitas.
+La URL enmascarada tiene una fecha de vencimiento. 
+
+La applicacion tiene que poder realizar las siguientes acciones.
+-POST: Crear un link apartir de una url validad  y tiene que devolver un JSON con la URL a enmascarar.
+-Redirrecion: Dado un link previamente enmascarado tiene que realizar un redirect a una URL previamente utilizada. Si el link no es valido, devolver un 404.
+-GET: Devuelve la cantidad de veces que se utilizo un link.
+-PUT: Dar de baja un link.
+----------------------------------------------------------
+
+[Entidad] Link:
+ID	  			INT
+Input			LINK 
+Output 			LINK
+Cliks			INT
+vencimiento 	STRING/DATE 
+Activo 			Bool
+
+...........................................................
+
