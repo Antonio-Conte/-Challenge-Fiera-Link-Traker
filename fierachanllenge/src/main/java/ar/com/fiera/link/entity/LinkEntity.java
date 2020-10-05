@@ -1,6 +1,4 @@
 package ar.com.fiera.link.entity;
-
-import java.net.URL;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -9,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Link")
+@Table(name = "links")
 public class LinkEntity {
 	@Id
 	@Column(name="Li_ID")
@@ -18,16 +16,17 @@ public class LinkEntity {
 	private String input;
 	@Column(name="Li_OUTPUT")
 	private String output;
-	@Column(name="Li_CLICK")
+	@Column(name="Li_CLICKS")
 	private int clicks;
 	@Column(name="Li_VENCIMIENTO")
 	private Date vencimiento;
 	
-	public LinkEntity(int id, String input, String output, int clicks, Date vencimiento) 
+	
+	public LinkEntity(int id, String input, int clicks, Date vencimiento) 
 	{
 		this.id=id;
 		this.input=input;
-		this.output=output;
+		output="localhost:9099/Links/v1/"+LinkToMask(input,8);
 		this.clicks=clicks;
 		this.vencimiento=vencimiento;
 	}
@@ -74,8 +73,21 @@ public class LinkEntity {
 		return vencimiento;
 	}
 
+	
 	public boolean getStatus() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
+	}
+	
+	 
+	public static String LinkToMask(String key, int length) {
+				String mask = ""; 
+		 
+		         for (int i=0; i<8; i++){ 
+		
+		         int codigoAscii = (int)Math.floor(Math.random()*(122 -
+		         97)+97); 
+		         mask = mask + (char)codigoAscii; 
+		         } 
+		         return mask; 
 	}
 }

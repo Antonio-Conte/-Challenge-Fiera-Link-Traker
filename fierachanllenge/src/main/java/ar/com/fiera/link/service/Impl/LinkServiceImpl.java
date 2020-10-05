@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ar.com.fiera.link.DTO.LinkDTO;
 import ar.com.fiera.link.entity.LinkEntity;
 import ar.com.fiera.link.repository.LinkRepository;
 import ar.com.fiera.link.service.LinkService;
@@ -28,27 +27,38 @@ public class LinkServiceImpl implements LinkService
 		List<LinkEntity> response = new ArrayList<>();
 		repository.findAll().stream().filter(x ->  x.getStatus()==true)
 				.forEach(response::add);
-
 		return response;		
 	}
-	public String MaskLink() 
+	
+	public LinkEntity GetLink(Integer element)
 	{
-		String a = null;
-		return a;
+		if (!repository.existsById(element))
+			return null;
+		return repository.getOne(element);	
 	}
+	
+	
+	public LinkEntity MaskLink(LinkEntity element) 
+	{
+		repository.save(element);	
+		return GetLink(element.getId());
+	}
+	
 	public int GetClicks(URL link) 
 	{
 		return 2;
 	}
-	public void DeleteLink(LinkDTO link) 
+	public void DeleteLink(LinkEntity link) 
 	{
 		
 	}
 
-	public LinkDTO GetClicks() 
+	public LinkEntity GetClicks() 
 	{
 		
 		return null;
 	}
+	
+	
 	
 }
