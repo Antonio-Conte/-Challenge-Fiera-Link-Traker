@@ -23,3 +23,10 @@ Activo 			Bool
 
 ...........................................................
 
+Despues de verificar el correcto funcionamiento de los metodos basicos, se implementaran los siguientes metodos:
+- GetLinks: Mostrara todos los links que fueron creados.
+- GetLink: Dado un ID, devolvera el link con ese ID, en caso de sen encontrado.
+- MostUsed: Devolvera el link mas usado.
+
+Tiempo en terminar la app: 5 horas.
+
