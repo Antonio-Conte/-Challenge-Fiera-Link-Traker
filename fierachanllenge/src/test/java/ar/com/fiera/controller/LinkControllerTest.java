@@ -52,4 +52,10 @@ public class LinkControllerTest
 		
 		
 	}
+	@Test
+	@DisplayName("Delete Links")
+	void DeleteLinkTest() 
+	{
+		
+	}
 }
