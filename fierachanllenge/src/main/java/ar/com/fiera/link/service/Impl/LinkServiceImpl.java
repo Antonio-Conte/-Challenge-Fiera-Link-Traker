@@ -69,11 +69,14 @@ public class LinkServiceImpl implements LinkService
 	public String getLink(String link) 
 	{
 		List<LinkEntity> response = new ArrayList<>();
-		repository.findAll().stream().filter(x -> x.getOutput().equals(link))
+		repository.findAll().stream().filter(x -> x.getOutput().equals(link)&& x.getStatus()==true)
 				.forEach(response::add);
+	if(response.isEmpty())return " ";
 		response.get(0).addClick();
 		repository.save(response.get(0));
+		
 		return response.get(0).getInput();
+		
 	}
 	
 	

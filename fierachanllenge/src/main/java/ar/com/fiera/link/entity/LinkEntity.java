@@ -30,6 +30,7 @@ public class LinkEntity {
 		output=LinkToMask(input,8);
 		this.clicks=clicks;
 		this.vencimiento=vencimiento;
+		this.status=true;
 	}
 	
 	public LinkEntity() {}
@@ -79,11 +80,12 @@ public class LinkEntity {
 
 	
 	public boolean getStatus() {
-		return true;
+		return status;
 	}
 	
 	 
-	public static String LinkToMask(String key, int length) {
+	public static String LinkToMask(String key, int length) 
+	{
 				String mask = ""; 
 		 
 		         for (int i=0; i<8; i++){ 
