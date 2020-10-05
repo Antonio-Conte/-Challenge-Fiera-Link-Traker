@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Link")
+@Table(name = "links")
 public class LinkEntity {
 	@Id
 	@Column(name="Li_ID")
@@ -16,16 +16,17 @@ public class LinkEntity {
 	private String input;
 	@Column(name="Li_OUTPUT")
 	private String output;
-	@Column(name="Li_CLICK")
+	@Column(name="Li_CLICKS")
 	private int clicks;
 	@Column(name="Li_VENCIMIENTO")
 	private Date vencimiento;
+	
 	
 	public LinkEntity(int id, String input, int clicks, Date vencimiento) 
 	{
 		this.id=id;
 		this.input=input;
-		output=LinkToMask(input,8);
+		output="localhost:9099/Links/v1/"+LinkToMask(input,8);
 		this.clicks=clicks;
 		this.vencimiento=vencimiento;
 	}
@@ -72,9 +73,9 @@ public class LinkEntity {
 		return vencimiento;
 	}
 
+	
 	public boolean getStatus() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 	
 	 

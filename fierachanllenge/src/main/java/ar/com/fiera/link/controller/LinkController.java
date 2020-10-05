@@ -35,9 +35,10 @@ public class LinkController
 		return response;
 	}
 	@PostMapping
-	public LinkEntity MaskLink(@RequestBody final LinkEntity url) 
+	public LinkEntity MaskLink(@RequestBody final int id, final String url) 
 	{
-	     LinkEntity response= service.MaskLink(url);
+		 LinkEntity newLink= new LinkEntity(id,url,0,null);
+	     LinkEntity response= service.MaskLink(newLink);
 	     return response;
 	}
 	
