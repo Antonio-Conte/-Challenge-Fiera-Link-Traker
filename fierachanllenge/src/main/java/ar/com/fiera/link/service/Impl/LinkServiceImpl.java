@@ -44,19 +44,36 @@ public class LinkServiceImpl implements LinkService
 		return GetLink(element.getId());
 	}
 	
-	public int GetClicks(URL link) 
+	
+	public void DeleteLink(String link) 
 	{
-		return 2;
-	}
-	public void DeleteLink(LinkEntity link) 
-	{
+		List<LinkEntity> response = new ArrayList<>();
+		repository.findAll().stream().filter(x -> x.getOutput().equals(link))
+				.forEach(response::add);
+		response.get(0).setStatus(false);
+		repository.save(response.get(0));
 		
 	}
 
-	public LinkEntity GetClicks() 
+	public int GetClicks(String link) 
 	{
 		
-		return null;
+		List<LinkEntity> response = new ArrayList<>();
+		repository.findAll().stream().filter(x -> x.getOutput().equals(link))
+				.forEach(response::add);
+		
+		return response.get(0).getClicks();	}
+	
+
+	@Override
+	public String getLink(String link) 
+	{
+		List<LinkEntity> response = new ArrayList<>();
+		repository.findAll().stream().filter(x -> x.getOutput().equals(link))
+				.forEach(response::add);
+		response.get(0).addClick();
+		repository.save(response.get(0));
+		return response.get(0).getInput();
 	}
 	
 	

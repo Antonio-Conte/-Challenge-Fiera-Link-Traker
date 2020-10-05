@@ -20,13 +20,14 @@ public class LinkEntity {
 	private int clicks;
 	@Column(name="Li_VENCIMIENTO")
 	private Date vencimiento;
-	
+	@Column(name="Li_Status")
+	private boolean status;
 	
 	public LinkEntity(int id, String input, int clicks, Date vencimiento) 
 	{
 		this.id=id;
 		this.input=input;
-		output="localhost:9099/Links/v1/"+LinkToMask(input,8);
+		output=LinkToMask(input,8);
 		this.clicks=clicks;
 		this.vencimiento=vencimiento;
 	}
@@ -60,6 +61,9 @@ public class LinkEntity {
 	public void setClick(int newClick) {
 		clicks=newClick;
 	}
+	public void addClick() {
+		this.clicks++;
+	}
 	
 	public int getClicks() {
 		return clicks;
@@ -89,5 +93,10 @@ public class LinkEntity {
 		         mask = mask + (char)codigoAscii; 
 		         } 
 		         return mask; 
+	}
+
+	public void setStatus(boolean b) {
+			this.status=b;
+		
 	}
 }

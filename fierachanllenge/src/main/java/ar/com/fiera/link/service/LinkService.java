@@ -8,6 +8,7 @@ public interface LinkService
 {
 	public List<LinkEntity> GetAllLinks();
 	public LinkEntity MaskLink(LinkEntity Url);
-	public LinkEntity GetClicks();
-	public void DeleteLink(LinkEntity link);
+	public int GetClicks(String Link);
+	public void DeleteLink(String link);
+	public String getLink(String link);
 }
