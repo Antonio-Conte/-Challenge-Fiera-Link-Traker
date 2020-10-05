@@ -1,6 +1,6 @@
 package ar.com.fiera.link.service.Impl;
 
-import java.net.URL;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +21,8 @@ public class LinkServiceImpl implements LinkService
 	{
 		this.repository=repository;
 	}
-	
+
+	@Override
 	public List<LinkEntity> GetAllLinks()
 	{
 		List<LinkEntity> response = new ArrayList<>();
@@ -29,44 +30,15 @@ public class LinkServiceImpl implements LinkService
 				.forEach(response::add);
 		return response;		
 	}
-	
-	public LinkEntity GetLink(Integer element)
+	@Override
+	public LinkEntity GetLinkById(Integer element)
 	{
 		if (!repository.existsById(element))
 			return null;
 		return repository.getOne(element);	
 	}
-	
-	
-	public LinkEntity MaskLink(LinkEntity element) 
-	{
-		repository.save(element);	
-		return GetLink(element.getId());
-	}
-	
-	
-	public void DeleteLink(String link) 
-	{
-		List<LinkEntity> response = new ArrayList<>();
-		repository.findAll().stream().filter(x -> x.getOutput().equals(link))
-				.forEach(response::add);
-		response.get(0).setStatus(false);
-		repository.save(response.get(0));
-		
-	}
-
-	public int GetClicks(String link) 
-	{
-		
-		List<LinkEntity> response = new ArrayList<>();
-		repository.findAll().stream().filter(x -> x.getOutput().equals(link))
-				.forEach(response::add);
-		
-		return response.get(0).getClicks();	}
-	
-
 	@Override
-	public String getLink(String link) 
+	public String GetLinkByMask(String link) 
 	{
 		List<LinkEntity> response = new ArrayList<>();
 		repository.findAll().stream().filter(x -> x.getOutput().equals(link)&& x.getStatus()==true)
@@ -78,6 +50,50 @@ public class LinkServiceImpl implements LinkService
 		return response.get(0).getInput();
 		
 	}
+	
+	
+	@Override
+	public LinkEntity MaskLink(LinkEntity element) 
+	{
+		repository.save(element);	
+		return GetLinkById(element.getId());
+	}
+	
+	
+	@Override
+	public Date GetDate(String link) 
+	{
+		List<LinkEntity> response = new ArrayList<>();
+		repository.findAll().stream().filter(x -> x.getOutput().equals(link)&& x.getStatus()==true)
+				.forEach(response::add);
+			if(response.isEmpty())return new Date(1/1/1);
+		
+		return response.get(0).getVencimiento();
+	}
+	
+	@Override
+	public int GetClicks(String link) 
+	{
+		
+		List<LinkEntity> response = new ArrayList<>();
+		repository.findAll().stream().filter(x -> x.getOutput().equals(link))
+				.forEach(response::add);
+		
+		return response.get(0).getClicks();	
+		
+	}
+	
+	@Override
+	public void DeleteLink(String link) 
+	{
+		List<LinkEntity> response = new ArrayList<>();
+		repository.findAll().stream().filter(x -> x.getOutput().equals(link))
+				.forEach(response::add);
+		response.get(0).setStatus(false);
+		repository.save(response.get(0));
+		
+	}
+	
 	
 	
 	

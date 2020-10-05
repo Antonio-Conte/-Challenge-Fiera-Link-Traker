@@ -78,7 +78,10 @@ public class LinkEntity {
 		return vencimiento;
 	}
 
+	public void setStatus(boolean b) {
+		this.status=b;
 	
+	}
 	public boolean getStatus() {
 		return status;
 	}
@@ -97,8 +100,5 @@ public class LinkEntity {
 		         return mask; 
 	}
 
-	public void setStatus(boolean b) {
-			this.status=b;
-		
-	}
+	
 }

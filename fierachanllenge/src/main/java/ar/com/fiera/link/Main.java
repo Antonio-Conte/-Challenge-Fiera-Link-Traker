@@ -9,11 +9,13 @@ import ar.com.fiera.link.config.SwaggerConfig;
 
 @SpringBootApplication
 @Import(SwaggerConfig.class)
-public class Main{
+public class Main
+{
 
 
 
-	public static void main(final String[] args ){
+	public static void main(final String[] args )
+	{
 		SpringApplication.run(Main.class);
 	}
 	
