@@ -10,51 +10,61 @@ public class LinkDTO implements Serializable
 	private static final long serialVersionUID = 1L;
 	
 	private int id;
-	private URL input;
-	private URL output;
+	private String input;
+	private String output;
 	private int clicks;
 	private Date vencimiento;
+	private boolean status;
 	
-	public LinkDTO(int id, URL input, URL output, int clicks, Date vencimiento) 
+	public LinkDTO(int id, String input, String output, int clicks, Date vencimiento, boolean status) 
 	{
 		this.id=id;
 		this.input=input;
 		this.output=output;
 		this.clicks=clicks;
 		this.vencimiento=vencimiento;
+		this.status= status;
 	}
 	
 	public LinkDTO() {}
 	
-	public void setId(int newId) {
+	public void setId(int newId)
+	{
 		id=newId;
 	}
 	
-	public int getId() {
+	public int getId() 
+	{
 		return id;
 	}
 	
-	public void setInput(URL newInput) {
+	public void setInput(String newInput)
+	{
 		input=newInput;
 	}
 	
-	public URL getInput() {
+	public String getInput()
+	{
 		return input;
 	}
 	
-	public void setId(URL newOutput) {
+	public void setId(String newOutput) 
+	{
 		output=newOutput;
 	}
 	
-	public URL getOutput() {
+	public String getOutput() 
+	{
 		return output;
 	}
 	
-	public void setClick(int newClick) {
+	public void setClick(int newClick) 
+	{
 		clicks=newClick;
 	}
 	
-	public int getClicks() {
+	public int getClicks()
+	{
 		return clicks;
 	}
 	
@@ -65,6 +75,13 @@ public class LinkDTO implements Serializable
 	public Date getVencimiento() {
 		return vencimiento;
 	}
+
+	public boolean getStatus() {
+		return false;
+	}
 	
+	public void setStatus(boolean newStatus) {
+		status=newStatus;
+	}
 
 }

@@ -15,15 +15,15 @@ public class LinkEntity {
 	@Column(name="Li_ID")
 	private int id;
 	@Column(name="Li_INPUT")
-	private URL input;
+	private String input;
 	@Column(name="Li_OUTPUT")
-	private URL output;
+	private String output;
 	@Column(name="Li_CLICK")
 	private int clicks;
 	@Column(name="Li_VENCIMIENTO")
 	private Date vencimiento;
 	
-	public LinkEntity(int id, URL input, URL output, int clicks, Date vencimiento) 
+	public LinkEntity(int id, String input, String output, int clicks, Date vencimiento) 
 	{
 		this.id=id;
 		this.input=input;
@@ -42,19 +42,19 @@ public class LinkEntity {
 		return id;
 	}
 	
-	public void setInput(URL newInput) {
+	public void setInput(String newInput) {
 		input=newInput;
 	}
 	
-	public URL getInput() {
+	public String getInput() {
 		return input;
 	}
 	
-	public void setId(URL newOutput) {
+	public void setId(String newOutput) {
 		output=newOutput;
 	}
 	
-	public URL getOutput() {
+	public String getOutput() {
 		return output;
 	}
 	
@@ -72,5 +72,10 @@ public class LinkEntity {
 	
 	public Date getVencimiento() {
 		return vencimiento;
+	}
+
+	public boolean getStatus() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
